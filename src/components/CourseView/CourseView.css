@@ -1,0 +1,38 @@
+.rating {
+  display: inline-block;
+  padding-right: 0.5em;
+  font-size: 1.5em;
+  vertical-align: middle;
+}
+
+.title {
+  text-align: right;
+  font-size: 1.25em;
+  font-weight: normal;
+}
+
+.code {
+  font-size: 2.5em;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.titleDivider {
+  margin: 1em;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em;
+  padding-bottom: 0.75em;
+}
+
+.reccomend {
+  display: inline-block;
+  font-size: 1.75em;
+}
+
+.thumb {
+  padding-bottom: 1.4em;
+}
