@@ -4,7 +4,8 @@ const initialState = {}
 
 function course(state = initialState, action) {
 	switch (action.type) {
-
+		case constants.COURSE_CLEAR:
+			return Object.assign({}, state, {})
 		case constants.COURSE_RECEIVE:
 			console.log(action.json)
 			return Object.assign({}, state, action.json)
@@ -14,11 +15,11 @@ function course(state = initialState, action) {
   }
 }
 
-function course_id(state = -1, action) {
+function course_id(state = 0, action) {
 	switch (action.type) {
 
 		case constants.COURSE_SET:
-			return action.id
+			return parseInt(action.course_id)
 
 		default:
 			return state

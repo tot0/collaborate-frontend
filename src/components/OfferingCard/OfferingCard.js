@@ -1,11 +1,12 @@
 import React from 'react'
 import marked from 'marked'
 import styles from './OfferingCard.css'
-import {Card, Content, Header, Rating, Grid, Column, Icon} from 'react-semantify'
+import {Card, Content, Header, Rating, Grid, Column, Icon, Link} from 'react-semantify'
 
 function OfferingCard(props) {
 
     return (
+      <a onClick={props.onClick} className={styles.link}>
         <Card className="fluid">
           <Content>
             <Header className="huge">{props.data.year}s{props.data.semester}</Header>
@@ -26,6 +27,7 @@ function OfferingCard(props) {
             </Grid>
           </Content>
         </Card>
+      </a>
     );
 }
 

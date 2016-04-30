@@ -1,9 +1,12 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import marked from 'marked'
+import history from '../../../client'
 import styles from './CourseView.css'
-import {Segment, Content, Header, Rating, Grid, Column, Divider, Icon} from 'react-semantify'
-import { setCourse } from '../../actions/course'
+import {Segment, Modal, Button, Content, Header, Rating, Grid, Column, Divider, Icon} from 'react-semantify'
+import { setCourse, fetchCourse, clearCourse } from '../../actions/course'
+import CreateReviewForm from '../CreateReviewForm/CreateReviewForm'
+import { setOffering } from '../../actions/offering'
 import OfferingCard from '../../components/OfferingCard/OfferingCard'
 
 class CourseView extends Component {
@@ -13,10 +16,22 @@ class CourseView extends Component {
     this.props.setCourseId(this.props.params.id)
   }
 
+  onClick() {
+    $('.ui.modal').modal('show')
+  }
+
+  killModal() {
+    $('.ui.modal').modal('hide')
+  }
+
+  handleClick(offeringId, props) {
+    this.props.setOfferingId(offeringId);
+    history.push('/offering/'+offeringId);
+  }
+
   render () {
-    const [name, rating] = ["COMP1927", 5]
-    console.log(this.props.data)
-    if (Object.keys(this.props.data).length === 0) {
+    if (Object.keys(this.props.data).length === 0 &&
+        this.props.course_id_1 != this.props.course_id_2) {
       return null
     }
     let results = null;
@@ -28,15 +43,19 @@ class CourseView extends Component {
       })
       let self = this
       results = this.props.data.offerings.map(function(offering) {
-        return <OfferingCard data={offering} key={offering.id} />
+        return <OfferingCard onClick={self.handleClick.bind(self, offering.id, self.props)} data={offering} key={offering.id} />
       })
     }
 
     return (
-      <div>
         <Grid>
-          <Column className="four wide" />
-          <Column className="eight wide">
+          <Column className="three wide" />
+          <Column className="ten wide">
+          <Modal init={true}>
+            <CreateReviewForm onSubmit={this.killModal}/>
+          </Modal>
+          <Button color="green" onClick={this.onClick}>Rate this course</Button>
+
             <Header className="ui top attached header">
               <div className={styles.header}>
                 <div className={styles.code}>
@@ -80,31 +99,32 @@ class CourseView extends Component {
                 </Grid>
               </Content>
             </Segment>
-          </Column>
-          <Column className="four wide" />
-        </Grid>
-        <Grid>
-          <Column className="four wide" />
-          <Column className="eight wide">
+            <Header>Offerings</Header>
             {results}
           </Column>
-          <Column className="four wide" />
+          <Column className="three wide" />
         </Grid>
-      </div>
     );
   }
 }
 
 function mapStateToProps(state) {
   return {
-    data: state.course
+    data: state.course,
+    course_id_1: state.course_id,
+    course_id_2: state.course.id
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     setCourseId: (id) => {
-      dispatch(setCourse(id))
+      dispatch(clearCourse()),
+      dispatch(setCourse(id)),
+      dispatch(fetchCourse(id))
+    },
+    setOfferingId: (id) => {
+      dispatch(setOffering(id))
     }
   }
 }

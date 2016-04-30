@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react'
 import { Input, Grid, Column} from 'react-semantify'
-
 import history from '../../../client'
 import { connect } from 'react-redux'
 import { fetchSearch, setSearchQuery } from '../../actions/search'
@@ -10,13 +9,15 @@ import { setCourse } from '../../actions/course'
 class ResultList extends Component {
   handleClick(courseId, props) {
     this.props.setCourseId(courseId);
-    console.log(courseId)
     history.push('/course/'+courseId);
   }
 
   componentWillMount() {
+    console.log("memes", this.props.params)
     this.props.setQuery(this.props.params)
+    this.props.fetchSearch(this.props.params)
   }
+
   render () {
     if (this.props.query == "") {
       return null;
@@ -57,6 +58,9 @@ function mapDispatchToProps(dispatch) {
     },
     setQuery: (query) => {
       dispatch(setSearchQuery(query))
+    },
+    fetchSearch: (query) => {
+      dispatch(fetchSearch(query))
     }
   }
 }

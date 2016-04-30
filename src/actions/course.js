@@ -9,6 +9,12 @@ function fetchCourse(id) {
   }
 }
 
+function clearCourse(json) {
+  return {
+    type: constants.COURSE_RESET
+  }
+}
+
 function receiveCourse(json) {
   return {
     type: constants.COURSE_RECEIVE,
@@ -17,12 +23,9 @@ function receiveCourse(json) {
 }
 
 function setCourse(id) {
-  return dispatch => {
-    dispatch(fetchCourse(id))
     return {
       type: constants.COURSE_SET,
-      id: id
+      course_id: id
     }
-  }
 }
-module.exports = { fetchCourse, receiveCourse, setCourse }
+module.exports = { fetchCourse, receiveCourse, setCourse, clearCourse}
