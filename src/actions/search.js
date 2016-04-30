@@ -3,7 +3,7 @@ const constants = require('../constants')
 
 function fetchSearch(query) {
   return dispatch => {
-    return fetch("http://108.61.213.229:5000/courses?q=" + query)
+    return fetch("http://108.61.213.229:5000/courses?q=" + escape(query))
       .then(req => req.json())
       .then(json => dispatch(receiveSearch(json)))
   }
