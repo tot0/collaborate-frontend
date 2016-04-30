@@ -8,6 +8,7 @@ import Home from './containers/Home/Home'
 const routes = (
   <Route path="/" component={App}>
     <IndexRoute component={Home}/>
+    <Route path="/search/:query" component={Home}/>
     {/*}<Route path="/package/:id/:name" component={Package}/>*/}
   </Route>
 )

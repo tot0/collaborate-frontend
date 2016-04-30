@@ -5,25 +5,29 @@ import { Link } from 'react-router'
 import { Grid, Column, Segment, Image } from 'react-semantify'
 import CourseCard from '../../components/CourseCard/CourseCard'
 import ResultList from '../ResultList/ResultList'
+import { setSearchQuery } from '../../actions/search'
 
 class Home extends Component {
+  componentWillMount() {
+    this.props.setQuery(this.props.params)
+  }
   render () {
-
+    console.log()
     return (
       <Grid className="examplegrid">
         <Column className="three wide"/>
         <Column className="ten wide">
           <ResultList />
-          <div className={styles.descSegment}>
+          {Object.keys(this.props.search_query).length === 0 || this.props.search_query.query == "" ? <div className={styles.descSegment}>
             <Segment className="raised">
               <div className={styles.descLogo}>
                 <Image className="medium" src="/public/Collaborate.png"></Image>
               </div>
-              <p className={styles.descPara}>
+               <p className={styles.descPara}>
                 Yea so collabor8 is really cool and like people should use it because dank memes and all that jazz.
               </p>
             </Segment>
-          </div>
+          </div> : null}
         </Column>
         <Column className="three wide"/>
       </Grid>
@@ -33,8 +37,16 @@ class Home extends Component {
 
 function mapStateToProps(state) {
   return {
-    results: state.search
+    search_query: state.search_query
   }
 }
 
-export default connect(mapStateToProps)(Home)
+function mapDispatchToProps(dispatch) {
+  return {
+    setQuery: (query) => {
+      dispatch(setSearchQuery(query))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

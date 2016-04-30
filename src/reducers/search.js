@@ -2,14 +2,26 @@ const constants = require('../constants');
 
 const initialState = {}
 
-function update(state = initialState, action) {
+function search(state = initialState, action) {
 	switch (action.type) {
 
 		case constants.SEARCH_RECEIVE:
-			return Object.assign([], state, action.json)
+			return Object.assign([], [], action.json)
 		default:
 			return state
   }
 }
 
-module.exports = update;
+function search_query(state = initialState, action) {
+	switch (action.type) {
+
+		case constants.SEARCH_SET_QUERY:
+			return Object.assign({}, state, action.query)
+		default:
+			return state
+  }
+}
+
+
+
+module.exports = { search, search_query};

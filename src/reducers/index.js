@@ -1,2 +1,2 @@
 export facebook from './facebook'
-export search from './search'
+export { search, search_query } from './search'

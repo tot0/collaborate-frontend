@@ -6,8 +6,16 @@ import CourseCard from '../../components/CourseCard/CourseCard'
 
 class ResultList extends Component {
   render () {
+    if (this.props.query == "") {
+      return null;
+    }
     let results = null;
     if(this.props.results.length) {
+      const sorted_results = this.props.results.sort(function(a, b) {
+        if (a.id < b.id) return -1
+        if (a.id > b.id) return 1
+        return 0
+      })
       results = this.props.results.map(function(course) {
         return <CourseCard data={course} key={course.id} />
       })
@@ -22,7 +30,8 @@ class ResultList extends Component {
 
 function mapStateToProps(state) {
   return {
-    results: state.search
+    results: state.search,
+    query: state.search_query.query
   }
 }
 

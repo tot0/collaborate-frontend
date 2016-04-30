@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
-import Header from '../components/Header/Header'
+import Header from './Header/Header'
 
 /* generic styles */
 import styles from '../styles/base.css'
