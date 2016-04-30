@@ -14,13 +14,13 @@ function OfferingCard(props) {
               <Column className="twelve wide">
                 <div className="meta">
                   <div className={styles.rating}>Satisfaction:</div>
-                  <Rating className="star massive" init={{initialRating: props.data.ratings.avg_rating, maxRating: 5, interactive: false}} disabled></Rating>
+                  <Rating className="star massive" init={{initialRating: props.data.aggregated_ratings.overall_satisfaction_avg, maxRating: 5, interactive: false}} disabled></Rating>
                 </div>
               </Column>
               <Column className="four wide">
                 <div>
                   <Icon className={styles.thumb + " thumbs outline up big"} />
-                  <div className={styles.reccomend}>{props.data.ratings.percent_reccomended}%</div>
+                  <div className={styles.reccomend}>{props.data.aggregated_ratings.percent_reccomended}%</div>
                 </div>
               </Column>
             </Grid>
