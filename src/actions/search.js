@@ -1,6 +1,5 @@
 import fetch from 'isomorphic-fetch'
 const constants = require('../constants')
-import { browserHistory } from 'react-router'
 
 function fetchSearch(query) {
   return dispatch => {
