@@ -31,7 +31,7 @@ class OfferingView extends Component {
         return <RatingCard data={rating} key={rating.id} />
       })
     }
-
+    console.log(this.props)
     return (
         <Grid>
           <Column className="three wide" />
@@ -42,10 +42,75 @@ class OfferingView extends Component {
                 <div className={styles.lecturer}>Lecturer: {this.props.data.lecturer.name}</div>
                 <Grid>
                   <Column className="twelve wide">
-                    <div className="meta">
-                      <div className={styles.rating}>Satisfaction:</div>
-                      <Rating className="star massive" init={{initialRating: this.props.data.aggregated_ratings.overall_satisfaction_avg, maxRating: 5, interactive: false}} disabled></Rating>
-                    </div>
+                    <table>
+                      <tbody>
+                    <tr><td>
+                      <div className={styles.rating}>Satisfaction</div>
+                    </td><td>
+                      <Rating className="star" init={{initialRating: this.props.data.aggregated_ratings.overall_satisfaction_avg, maxRating: 5, interactive: false}} disabled></Rating>
+                    </td></tr>
+                    <tr><td>
+                      <div className={styles.rating}>Would Recommend </div>
+                      </td><td>
+                      {this.props.data.aggregated_ratings.percent_recommended}%
+                      </td></tr>
+                    <tr><td>
+                      <div className={styles.rating}>Interesting</div>
+                        </td><td>
+                      <Rating className="star" init={{initialRating: this.props.data.aggregated_ratings.interesting_avg, maxRating: 5, interactive: false}} disabled></Rating>
+</td></tr>
+                    <tr><td>
+                      <div className={styles.rating}>Challenging</div>
+                        </td><td>
+                      <Rating className="star" init={{initialRating: this.props.data.aggregated_ratings.challenging_avg, maxRating: 5, interactive: false}} disabled></Rating>
+</td></tr>
+                    <tr><td>
+                      <div className={styles.rating}>Time Consuming</div>
+                      </td><td>
+                      <Rating className="star" init={{initialRating: this.props.data.aggregated_ratings.time_consuming_avg, maxRating: 5, interactive: false}} disabled></Rating>
+</td></tr>
+                    <tr><td>
+                      <div className={styles.rating}>Useful</div>
+                        </td><td>
+                      <Rating className="star" init={{initialRating: this.props.data.useful_avg, maxRating: 5, interactive: false}} disabled></Rating>
+</td></tr>
+                    <tr><td>
+                      <div className={styles.rating}>Lecture Quality</div>
+                        </td><td>
+                      <Rating className="star" init={{initialRating: this.props.data.useful_avg, maxRating: 5, interactive: false}} disabled></Rating>
+</td></tr>
+                    <tr><td>
+                      <div className={styles.rating}>Lectures recorded</div>
+                      </td><td>
+                      {this.props.data.aggregated_ratings.percent_lecture_videos}%
+</td></tr>
+                    <tr><td>
+                      <div className={styles.rating}>Lecture attendance mandatory</div>
+                      </td><td>
+                      {this.props.data.aggregated_ratings.percent_lecture_attendance}%
+</td></tr>
+                    <tr><td>
+                      <div className={styles.rating}>Tutorial attendance mandatory</div>
+                      </td><td>
+                      {this.props.data.aggregated_ratings.percent_tutorial_attendance}%
+</td></tr>
+                    <tr><td>
+                      <div className={styles.rating}>Assessment Enjoyability</div>
+                        </td><td>
+                      <Rating className="star" init={{initialRating: this.props.data.assessment_enjoyable_avg, maxRating: 5, interactive: false}} disabled></Rating>
+</td></tr>
+                    <tr><td>
+                      <div className={styles.rating}>Assessment Challenge</div>
+                        </td><td>
+                      <Rating className="star" init={{initialRating: this.props.data.assessment_challenging_avg, maxRating: 5, interactive: false}} disabled></Rating>
+</td></tr>
+                    <tr><td>
+                      <div className={styles.rating}>Assessment Relevance</div>
+                        </td><td>
+                      <Rating className="star" init={{initialRating: this.props.data.assessment_relevant_avg, maxRating: 5, interactive: false}} disabled></Rating>
+                    </td></tr>
+                    </tbody>
+                    </table>
                   </Column>
                   <Column className="four wide">
                     <div>

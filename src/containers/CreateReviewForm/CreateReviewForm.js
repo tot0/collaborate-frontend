@@ -27,6 +27,7 @@ class CreateReviewForm extends Component {
     state.comment = $('textarea').val()
     let offering = $('.ui.dropdown').first().dropdown('get value')
     console.log(offering)
+    console.log("memes")
     // if (typeof(offering) == Array) {
     //   state.offering = offering.slice(-1)
     // }
