@@ -1,10 +1,16 @@
 import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 import marked from 'marked'
 import styles from './CourseView.css'
 import {Segment, Content, Header, Rating, Grid, Column, Divider, Icon} from 'react-semantify'
 
 class CourseView extends Component {
-  
+
+  componentWillMount() {
+    console.log(this.props.params.id)
+    this.props.setCourseId(this.props.params.id)
+  }
+
   render () {
     const [name, rating] = ["COMP1927", 5]
     return (
@@ -12,10 +18,10 @@ class CourseView extends Component {
           <div className="ui top attached header">
             <div className={styles.header}>
               <div className={styles.code}>
-                {props.data.code}
+                {this.props.data.code}
               </div>
               <div className={styles.title}>
-                {props.data.title}
+                {this.props.data.title}
               </div>
             </div>
           </div>
@@ -25,13 +31,13 @@ class CourseView extends Component {
                 <Column className="twelve wide">
                   <div className="meta">
                     <div className={styles.rating}>Semester 1:</div>
-                    <Rating className="star massive" init={{initialRating: props.data.ratings.sem_1.avg_rating, maxRating: 5, interactive: false}} disabled></Rating>
+                    <Rating className="star massive" init={{initialRating: this.props.data.ratings.sem_1.avg_rating, maxRating: 5, interactive: false}} disabled></Rating>
                   </div>
                 </Column>
                 <Column className="four wide">
                   <div>
                     <Icon className={styles.thumb + " thumbs outline up big"} />
-                    <div className={styles.reccomend}>{props.data.ratings.sem_1.percent_reccomended}%</div>
+                    <div className={styles.reccomend}>{this.props.data.ratings.sem_1.percent_reccomended}%</div>
                   </div>
                 </Column>
               </Grid>
@@ -40,13 +46,13 @@ class CourseView extends Component {
                 <Column className="twelve wide">
                   <div className="meta">
                     <div className={styles.rating}>Semester 2:</div>
-                    <Rating className="star massive" init={{initialRating: props.data.ratings.sem_2.avg_rating, maxRating: 5, interactive: false}} disabled></Rating>
+                    <Rating className="star massive" init={{initialRating: this.props.data.ratings.sem_2.avg_rating, maxRating: 5, interactive: false}} disabled></Rating>
                   </div>
                 </Column>
                 <Column className="four wide">
                   <div>
                     <Icon className={styles.thumb + " thumbs outline up big"} />
-                    <div className={styles.reccomend}>{props.data.ratings.sem_2.percent_reccomended}%</div>
+                    <div className={styles.reccomend}>{this.props.data.ratings.sem_2.percent_reccomended}%</div>
                   </div>
                 </Column>
               </Grid>
@@ -57,4 +63,18 @@ class CourseView extends Component {
   }
 }
 
-export default CourseView
+function mapStateToProps(state) {
+  return {
+    data: state.course
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    setCourseId: (id) => {
+      dispatch(setCourse(id))
+    }
+  }
+}
+
+export default connect(mapStateToProps)(CourseView)

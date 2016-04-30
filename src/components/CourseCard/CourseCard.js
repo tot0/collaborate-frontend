@@ -5,6 +5,7 @@ import {Card, Content, Header, Rating} from 'react-semantify'
 function CourseCard(props) {
 
     return (
+        <a onClick={props.onClick}>
         <Card className="fluid">
           <Content>
             <Header>{props.data.code} {props.data.title}</Header>
@@ -13,6 +14,7 @@ function CourseCard(props) {
             </div>
           </Content>
         </Card>
+        </a>
     );
 }
 
