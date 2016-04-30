@@ -3,15 +3,10 @@ import { connect } from 'react-redux'
 import marked from 'marked'
 import history from '../../../client'
 import styles from './CourseView.css'
-<<<<<<< Updated upstream
 import {Segment, Modal, Button, Content, Header, Rating, Grid, Column, Divider, Icon} from 'react-semantify'
 import { setCourse, fetchCourse, clearCourse } from '../../actions/course'
 import CreateReviewForm from '../CreateReviewForm/CreateReviewForm'
-=======
-import {Segment, Content, Header, Rating, Grid, Column, Divider, Icon} from 'react-semantify'
-import { setCourse } from '../../actions/course'
 import { setOffering } from '../../actions/offering'
->>>>>>> Stashed changes
 import OfferingCard from '../../components/OfferingCard/OfferingCard'
 
 class CourseView extends Component {
@@ -54,8 +49,8 @@ class CourseView extends Component {
 
     return (
         <Grid>
-          <Column className="four wide" />
-          <Column className="eight wide">
+          <Column className="three wide" />
+          <Column className="ten wide">
           <Modal init={true}>
             <CreateReviewForm onSubmit={this.killModal}/>
           </Modal>
@@ -104,9 +99,10 @@ class CourseView extends Component {
                 </Grid>
               </Content>
             </Segment>
+            <Header>Offerings</Header>
             {results}
           </Column>
-          <Column className="four wide" />
+          <Column className="three wide" />
         </Grid>
     );
   }
@@ -123,16 +119,12 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     setCourseId: (id) => {
-<<<<<<< Updated upstream
-      dispatch(clearCourse())
+      dispatch(clearCourse()),
       dispatch(setCourse(id)),
       dispatch(fetchCourse(id))
-=======
-      dispatch(setCourse(id))
     },
     setOfferingId: (id) => {
       dispatch(setOffering(id))
->>>>>>> Stashed changes
     }
   }
 }

@@ -33,7 +33,6 @@ class OfferingView extends Component {
     }
 
     return (
-      <div>
         <Grid>
           <Column className="three wide" />
           <Column className="ten wide">
@@ -57,18 +56,11 @@ class OfferingView extends Component {
                 </Grid>
               </Content>
             </Segment>
+            <Header>Ratings</Header>
+            {results}
           </Column>
           <Column className="three wide" />
         </Grid>
-        <Grid>
-          <Column className="four wide" />
-          <Column className="eight wide">
-            <Header>Offerings</Header>
-            {results}
-          </Column>
-          <Column className="four wide" />
-        </Grid>
-      </div>
     );
   }
 }
