@@ -5,6 +5,9 @@ import styles from './Home.css'
 import Loader from '../../components/Loader/Loader'
 import { isEmpty } from '../../utils'
 import { Link } from 'react-router'
+import { Grid, Column } from 'react-semantify'
+import CourseCard from '../../components/CourseCard/CourseCard'
+
 
 class Home extends Component {
 
@@ -32,7 +35,7 @@ class Home extends Component {
       loader = null
 
       packages = (
-        npmPackages.map(function (p) { 
+        npmPackages.map(function (p) {
           return (
             <li key={p.id}>
               <Link to={`/package/${p.id}/${p.name}`}>
@@ -46,10 +49,14 @@ class Home extends Component {
 
     return (
       <div className={styles.home}>
-        { loader }
-        <div className={styles.list}>
-          <ul>{ packages }</ul>
-        </div>
+        <Grid className="examplegrid">
+          <Column className="two wide"/>
+          <Column className="twelve wide">
+            <CourseCard data={{name: "COMP1927", rating: 5, year: 15, sem: 2}}/>
+          </Column>
+          <Column className="two wide"/>
+        </Grid>
+
       </div>
     )
   }
@@ -57,7 +64,7 @@ class Home extends Component {
 
 function mapStateToProps(state) {
   console.log(state)
-  return { 
+  return {
     npmPackages: state.npmPackages.packages
   }
 }
