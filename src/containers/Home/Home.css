@@ -30,6 +30,12 @@
   padding-top: 10vh;
 }
 
+.descLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .descTitle {
   text-align: center;
   font-size: 3em;

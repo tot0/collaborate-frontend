@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import styles from './Home.css'
 import { Link } from 'react-router'
-import { Grid, Column, Segment } from 'react-semantify'
+import { Grid, Column, Segment, Image } from 'react-semantify'
 import CourseCard from '../../components/CourseCard/CourseCard'
 
 class Home extends Component {
@@ -14,8 +14,10 @@ class Home extends Component {
         <Column className="five wide"/>
         <Column className="six wide">
           <div className={styles.descSegment}>
-            <Segment className="raised" color="yellow">
-              <h1 className={styles.descTitle}>Collaborate</h1>
+            <Segment className="raised">
+              <div className={styles.descLogo}>
+                <Image className="medium" src="/public/Collaborate.png"></Image>
+              </div>
               <p className={styles.descPara}>
                 Yea so collabor8 is really cool and like people should use it because dank memes and all that jazz.
               </p>
