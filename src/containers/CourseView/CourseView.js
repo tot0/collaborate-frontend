@@ -46,7 +46,7 @@ class CourseView extends Component {
         return <OfferingCard onClick={self.handleClick.bind(self, offering.id, self.props)} data={offering} key={offering.id} />
       })
     }
-
+    console.log(this.props.data.ratings)
     return (
         <Grid>
           <Column className="three wide" />
@@ -69,31 +69,31 @@ class CourseView extends Component {
             <Segment className="bottom attached">
               <Content>
                 <Grid>
-                  <Column className="twelve wide">
+                  <Column className="eleven wide">
                     <div className="meta">
-                      <div className={styles.rating}>Semester 1:</div>
+                      <div className={styles.rating}>Sem 1:</div>
                       <Rating className="star massive" init={{initialRating: this.props.data.ratings.sem_1.avg_rating, maxRating: 5, interactive: false}} disabled></Rating>
                     </div>
                   </Column>
-                  <Column className="four wide">
+                  <Column className="five wide">
                     <div>
                       <Icon className={styles.thumb + " thumbs outline up big"} />
-                      <div className={styles.reccomend}>{this.props.data.ratings.sem_1.percent_reccomended}%</div>
+                      <div className={styles.reccomend}>{this.props.data.ratings.sem_1.percent_recommended}%</div>
                     </div>
                   </Column>
                 </Grid>
                 <Divider className="" />
                 <Grid>
-                  <Column className="twelve wide">
+                  <Column className="eleven wide">
                     <div className="meta">
-                      <div className={styles.rating}>Semester 2:</div>
+                      <div className={styles.rating}>Sem 2:</div>
                       <Rating className="star massive" init={{initialRating: this.props.data.ratings.sem_2.avg_rating, maxRating: 5, interactive: false}} disabled></Rating>
                     </div>
                   </Column>
-                  <Column className="four wide">
+                  <Column className="five wide">
                     <div>
                       <Icon className={styles.thumb + " thumbs outline up big"} />
-                      <div className={styles.reccomend}>{this.props.data.ratings.sem_2.percent_reccomended}%</div>
+                      <div className={styles.reccomend}>{this.props.data.ratings.sem_2.percent_recommended}%</div>
                     </div>
                   </Column>
                 </Grid>
