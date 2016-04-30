@@ -17,9 +17,6 @@ class ResultList extends Component {
   componentWillMount() {
     this.props.setQuery(this.props.params)
   }
-  componentDidMount() {
-    this.props.setCourseId(2)
-  }
   render () {
     if (this.props.query == "") {
       return null;

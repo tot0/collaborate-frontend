@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import marked from 'marked'
 import styles from './CourseView.css'
 import {Segment, Content, Header, Rating, Grid, Column, Divider, Icon} from 'react-semantify'
-
+import { setCourse } from '../../actions/course'
 class CourseView extends Component {
 
   componentWillMount() {
@@ -13,6 +13,10 @@ class CourseView extends Component {
 
   render () {
     const [name, rating] = ["COMP1927", 5]
+    console.log(this.props.data)
+    if (Object.keys(this.props.data).length === 0) {
+      return null
+    }
     return (
       <div>
           <div className="ui top attached header">
@@ -77,4 +81,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps)(CourseView)
+export default connect(mapStateToProps, mapDispatchToProps)(CourseView)
