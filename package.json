@@ -1,5 +1,5 @@
 {
-  "name": "Collaborate Front End",
+  "name": "Collaborate_Front_End",
   "description": "Front End for Collaborate",
   "version": "1.0.0",
   "license": "MIT",
@@ -20,6 +20,7 @@
     "react-redux": "^4.4.5",
     "react-router": "^2.3.0",
     "react-router-redux": "^4.0.2",
+    "react-semantify": "^0.4.3",
     "redux": "^3.5.1",
     "redux-thunk": "^2.0.1"
   },
