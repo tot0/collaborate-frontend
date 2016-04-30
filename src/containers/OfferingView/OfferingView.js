@@ -42,13 +42,13 @@ class OfferingView extends Component {
                 <div className={styles.lecturer}>Lecturer: {this.props.data.lecturer.name}</div>
                 <Grid>
                   <Column className="twelve wide">
-                    <div className="meta">
+                    <div className={styles.satisfaction + " meta"}>
                       <div className={styles.rating}>Satisfaction:</div>
                       <Rating className="star massive" init={{initialRating: this.props.data.aggregated_ratings.overall_satisfaction_avg, maxRating: 5, interactive: false}} disabled></Rating>
                     </div>
                   </Column>
                   <Column className="four wide">
-                    <div>
+                    <div className={styles.satisfaction + " " + styles.rightio}>
                       <Icon className={styles.thumb + " thumbs outline up big"} />
                       <div className={styles.recommend}>{this.props.data.aggregated_ratings.percent_recommended}%</div>
                     </div>
