@@ -1,10 +1,17 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import marked from 'marked'
+import history from '../../../client'
 import styles from './CourseView.css'
+<<<<<<< Updated upstream
 import {Segment, Modal, Button, Content, Header, Rating, Grid, Column, Divider, Icon} from 'react-semantify'
 import { setCourse, fetchCourse, clearCourse } from '../../actions/course'
 import CreateReviewForm from '../CreateReviewForm/CreateReviewForm'
+=======
+import {Segment, Content, Header, Rating, Grid, Column, Divider, Icon} from 'react-semantify'
+import { setCourse } from '../../actions/course'
+import { setOffering } from '../../actions/offering'
+>>>>>>> Stashed changes
 import OfferingCard from '../../components/OfferingCard/OfferingCard'
 
 class CourseView extends Component {
@@ -22,6 +29,11 @@ class CourseView extends Component {
     $('.ui.modal').modal('hide')
   }
 
+  handleClick(offeringId, props) {
+    this.props.setOfferingId(offeringId);
+    history.push('/offering/'+offeringId);
+  }
+
   render () {
     if (Object.keys(this.props.data).length === 0 &&
         this.props.course_id_1 != this.props.course_id_2) {
@@ -36,7 +48,7 @@ class CourseView extends Component {
       })
       let self = this
       results = this.props.data.offerings.map(function(offering) {
-        return <OfferingCard data={offering} key={offering.id} />
+        return <OfferingCard onClick={self.handleClick.bind(self, offering.id, self.props)} data={offering} key={offering.id} />
       })
     }
 
@@ -111,9 +123,16 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     setCourseId: (id) => {
+<<<<<<< Updated upstream
       dispatch(clearCourse())
       dispatch(setCourse(id)),
       dispatch(fetchCourse(id))
+=======
+      dispatch(setCourse(id))
+    },
+    setOfferingId: (id) => {
+      dispatch(setOffering(id))
+>>>>>>> Stashed changes
     }
   }
 }
