@@ -14,9 +14,9 @@ function App({ pushPath, children }) {
   return (
     <div>
 
-    <Header />
+      <Header />
 
-      <main>      
+      <main>
         {children}
       </main>
 

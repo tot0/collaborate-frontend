@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import styles from './Header.css'
-import {Menu, Item, Icon} from 'react-semantify'
+import {Menu, Item, Icon, Grid, Column, Input} from 'react-semantify'
 
 function Header() {
   return (
@@ -14,6 +14,17 @@ function Header() {
           <Icon className="mail"/> Messages
         </Item>
       </Menu>
+
+      <Grid className="">
+        <Column className="four wide" />
+        <Column className="eight wide">
+          <div className={styles.searchBox}>
+            <Input className="searchBox fluid" placeholder="Search for courses..." type="text" />
+          </div>
+        </Column>
+        <Column className="four wide" />
+      </Grid>
+
     </header>
   )
 }

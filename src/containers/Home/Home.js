@@ -5,7 +5,7 @@ import styles from './Home.css'
 import Loader from '../../components/Loader/Loader'
 import { isEmpty } from '../../utils'
 import { Link } from 'react-router'
-import { Grid, Column } from 'react-semantify'
+import { Grid, Column, Segment } from 'react-semantify'
 import CourseCard from '../../components/CourseCard/CourseCard'
 
 
@@ -25,39 +25,21 @@ class Home extends Component {
 
   render () {
 
-    const { npmPackages } = this.props
-    let loader = <Loader />
-    let packages = null
-
-    if( isEmpty(npmPackages) ){
-      /* npm packages not loaded yet... */
-    } else {
-      loader = null
-
-      packages = (
-        npmPackages.map(function (p) {
-          return (
-            <li key={p.id}>
-              <Link to={`/package/${p.id}/${p.name}`}>
-                <p className={styles.name}>{p.name}</p>
-              </Link>
-            </li>
-          )
-        })
-      )
-    }
-
     return (
-      <div className={styles.home}>
-        <Grid className="examplegrid">
-          <Column className="two wide"/>
-          <Column className="twelve wide">
-            <CourseCard data={{name: "COMP1927", rating: 5, year: 15, sem: 2}}/>
-          </Column>
-          <Column className="two wide"/>
-        </Grid>
-
-      </div>
+      <Grid className="examplegrid">
+        <Column className="five wide"/>
+        <Column className="six wide">
+          <div className={styles.descSegment}>
+            <Segment className="raised" color="yellow">
+              <h1 className={styles.descTitle}>Collaborate</h1>
+              <p className={styles.descPara}>
+                Yea so collabor8 is really cool and like people should use it because dank memes and all that jazz.
+              </p>
+            </Segment>
+          </div>
+        </Column>
+        <Column className="five wide"/>
+      </Grid>
     )
   }
 }
