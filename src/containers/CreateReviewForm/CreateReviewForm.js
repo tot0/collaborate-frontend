@@ -25,7 +25,14 @@ class CreateReviewForm extends Component {
       state.tutorial_attendance] = $('.ui.checkbox').checkbox('is checked')
 
     state.comment = $('textarea').val()
-    state.offering_id = parseInt($('.ui.dropdown').first().dropdown('get value'))
+    let offering = $('.ui.dropdown').first().dropdown('get value')
+    console.log(offering)
+    // if (typeof(offering) == Array) {
+    //   state.offering = offering.slice(-1)
+    // }
+    state.offering = parseInt(offering)
+
+
     state.access_token = this.props.access_token
     console.log(state)
     this.props.sendRating(state)
@@ -103,7 +110,7 @@ class CreateReviewForm extends Component {
           </Field>
           <Header className="dividing">Tutorials</Header>
           <Field>
-            <label>Would you recommend this course to a friend?</label>
+            <label>Is tutorial attendance recorded?</label>
             <Checkbox className="toggle" init={true}>
             <input type="checkbox" name="gift" tabindex="0" class="hidden"/>
             </Checkbox>
