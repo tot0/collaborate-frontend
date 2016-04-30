@@ -15,8 +15,11 @@ class ResultList extends Component {
   }
 
   componentWillMount() {
+    console.log("memes", this.props.params)
     this.props.setQuery(this.props.params)
+    this.props.fetchSearch(this.props.params)
   }
+
   render () {
     if (this.props.query == "") {
       return null;
@@ -57,6 +60,9 @@ function mapDispatchToProps(dispatch) {
     },
     setQuery: (query) => {
       dispatch(setSearchQuery(query))
+    },
+    fetchSearch: (query) => {
+      dispatch(fetchSearch(query))
     }
   }
 }

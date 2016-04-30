@@ -3,7 +3,6 @@ import styles from './FacebookLoginContainer.css'
 import { connect } from 'react-redux'
 import FacebookLogin from 'react-facebook-login'
 import {setFacebookAction} from '../../actions/facebook'
-import {fetchSearch} from '../../actions/search'
 
 class FacebookLoginContainer extends Component {
   constructor(props) {

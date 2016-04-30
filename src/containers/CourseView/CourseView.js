@@ -2,8 +2,10 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import marked from 'marked'
 import styles from './CourseView.css'
-import {Segment, Content, Header, Rating, Grid, Column, Divider, Icon} from 'react-semantify'
-import { setCourse } from '../../actions/course'
+import {Segment, Modal, Button, Content, Header, Rating, Grid, Column, Divider, Icon} from 'react-semantify'
+import { setCourse, fetchCourse, clearCourse } from '../../actions/course'
+import CreateReviewForm from '../CreateReviewForm/CreateReviewForm'
+
 class CourseView extends Component {
 
   componentWillMount() {
@@ -11,14 +13,28 @@ class CourseView extends Component {
     this.props.setCourseId(this.props.params.id)
   }
 
+  onClick() {
+    $('.ui.modal').modal('show')
+  }
+
+  killModal() {
+    $('.ui.modal').modal('hide')
+  }
+
   render () {
-    const [name, rating] = ["COMP1927", 5]
-    console.log(this.props.data)
-    if (Object.keys(this.props.data).length === 0) {
+    if (Object.keys(this.props.data).length === 0 &&
+        this.props.course_id_1 != this.props.course_id_2) {
       return null
     }
     return (
-      <div>
+      <Grid>
+
+        <Column className="three wide"/>
+        <Column className="ten wide">
+          <Modal init={true}>
+            <CreateReviewForm onSubmit={this.killModal}/>
+          </Modal>
+          <Button color="green" onClick={this.onClick}>Rate this course</Button>
           <div className="ui top attached header">
             <div className={styles.header}>
               <div className={styles.code}>
@@ -62,21 +78,27 @@ class CourseView extends Component {
               </Grid>
             </Content>
           </Segment>
-      </div>
+        </Column>
+        <Column className="three wide"/>
+      </Grid>
     );
   }
 }
 
 function mapStateToProps(state) {
   return {
-    data: state.course
+    data: state.course,
+    course_id_1: state.course_id,
+    course_id_2: state.course.id
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     setCourseId: (id) => {
-      dispatch(setCourse(id))
+      dispatch(clearCourse())
+      dispatch(setCourse(id)),
+      dispatch(fetchCourse(id))
     }
   }
 }

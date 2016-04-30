@@ -7,7 +7,9 @@ import history from '../../../client';
 
 class SearchBox extends Component {
   componentDidMount() {
-    this.props.sendSearch(this.props.query)
+    if (this.props.query) {
+      this.props.sendSearch(this.props.query)
+    }
   }
 
   onChange(event) {
@@ -17,7 +19,6 @@ class SearchBox extends Component {
   }
 
   render () {
-    console.log(this.props.query)
     return (
       <div className={styles.searchBox}>
         <div className="ui input searchBox fluid">

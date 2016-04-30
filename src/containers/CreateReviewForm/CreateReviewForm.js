@@ -2,9 +2,12 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { Grid, Icon, Menu, Item, Text, Dropdown, Button, Column, Segment, Header, Image, Form, Field, Label, Rating, Checkbox } from 'react-semantify'
+import { sendForm } from '../../actions/create_rating'
+
 
 class CreateReviewForm extends Component {
   submit() {
+    this.props.onSubmit()
     let state = {};
     [ state.overall_satisfaction,
       state.interesting,
@@ -19,10 +22,17 @@ class CreateReviewForm extends Component {
     [ state.recommended,
       state.lecture_videos,
       state.lecture_attendance,
-      state.tutorial_attendance] = $('.ui.checkbox').checkbox('is checked');
+      state.tutorial_attendance] = $('.ui.checkbox').checkbox('is checked')
 
-    state.comments = $('textarea').val()
+    state.comment = $('textarea').val()
+    state.offering_id = parseInt($('.ui.dropdown').first().dropdown('get value'))
+    state.access_token = this.props.access_token
     console.log(state)
+    this.props.sendRating(state)
+  }
+
+  componentDidMount() {
+    $('.ui.dropdown').dropdown()
   }
 
   render () {
@@ -32,16 +42,20 @@ class CreateReviewForm extends Component {
         <Form>
           <Field>
             <label>Select the year and session to review.</label>
-            <Dropdown init={true} className="fluid search selection">
-            	<Text>
-            		Select Offering
-            	</Text>
-            	<Icon className="dropdown"/>
-            	<Menu>
-            		<Item>Choose1</Item>
-            		<Item>Choose2</Item>
-            	</Menu>
-            </Dropdown>
+            <div className="ui dropdown fluid selection">
+              <input type="hidden" name="offering"/>
+              <Icon className="dropdown"/>
+            	<div className="default text">Select Offering</div>
+            	<div className="menu">
+                {this.props.course.offerings.map(function(item) {
+                  return (
+                    <div className="item" key={item.id} data-value={item.id}>
+                      {item.year.toString().substr(2,2)}s{item.semester}
+                    </div>
+                  )
+                })}
+            	</div>
+            </div>
           </Field>
           <Header className="dividing">General</Header>
           <Field>
@@ -121,14 +135,16 @@ class CreateReviewForm extends Component {
 
 function mapStateToProps(state) {
   return {
-    search_query: state.search_query
+    search_query: state.search_query,
+    course: state.course,
+    access_token: state.facebook.token
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    setQuery: (query) => {
-      dispatch(setSearchQuery(query))
+    sendRating: (form_data) => {
+      dispatch(sendForm(form_data))
     }
   }
 }

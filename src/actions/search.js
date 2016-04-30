@@ -2,6 +2,7 @@ import fetch from 'isomorphic-fetch'
 const constants = require('../constants')
 
 function fetchSearch(query) {
+  console.log(query)
   return dispatch => {
     return fetch("http://108.61.213.229:5000/courses?q=" + query)
       .then(req => req.json())
@@ -10,6 +11,7 @@ function fetchSearch(query) {
 }
 
 function receiveSearch(json) {
+  console.log("SEARCHING", json)
   return {
     type: constants.SEARCH_RECEIVE,
     json: json
