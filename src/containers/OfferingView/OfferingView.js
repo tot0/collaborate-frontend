@@ -115,7 +115,7 @@ class OfferingView extends Component {
                   <Column className="four wide">
                     <div>
                       <Icon className={styles.thumb + " thumbs outline up big"} />
-                      <div className={styles.reccomend}>{this.props.data.aggregated_ratings.percent_reccomended}%</div>
+                      <div className={styles.recommend}>{this.props.data.aggregated_ratings.percent_recommended}%</div>
                     </div>
                   </Column>
                 </Grid>
