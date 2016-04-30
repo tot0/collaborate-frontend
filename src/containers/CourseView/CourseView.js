@@ -1,20 +1,24 @@
-import React from 'react'
+import React, { Component, PropTypes } from 'react'
 import marked from 'marked'
 import {Segment, Content, Header, Rating} from 'react-semantify'
 
-function CourseView(props) {
+class CourseView extends Component {
+  
+  render () {
+    const [name, rating] = ["COMP1927", 5]
     return (
       <div>
         <Segment className="fluid">
           <Content>
-            <Header>{props.data.name} <small>{props.data.year}s{props.data.sem}</small></Header>
+            <Header>{name}</Header>
             <div className="meta">
-              <Rating className="star" init={{initialRating: props.data.rating, maxRating: 5, interactive: false}} disabled></Rating>
+              <Rating className="star" init={{initialRating: rating, maxRating: 5, interactive: false}}></Rating>
             </div>
           </Content>
         </Segment>
       </div>
     );
+  }
 }
 
 export default CourseView

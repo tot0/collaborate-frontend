@@ -1,10 +1,18 @@
 import React, { Component, PropTypes } from 'react'
-import { Input } from 'react-semantify'
+import { Input, Grid, Column} from 'react-semantify'
+
 import { connect } from 'react-redux'
-import { fetchSearch } from '../../actions/search'
+import { fetchSearch, setSearchQuery } from '../../actions/search'
 import CourseCard from '../../components/CourseCard/CourseCard'
+import { setCourse } from '../../actions/course'
 
 class ResultList extends Component {
+  componentWillMount() {
+    this.props.setQuery(this.props.params)
+  }
+  componentDidMount() {
+    this.props.setCourseId(2)
+  }
   render () {
     if (this.props.query == "") {
       return null;
@@ -21,9 +29,11 @@ class ResultList extends Component {
       })
     }
     return (
-      <div>
-      {results}
-      </div>
+      <Grid>
+        <Column className="three wide"/>
+        <Column className="ten wide">{results}</Column>
+        <Column className="three wide"/>
+      </Grid>
     )
   }
 }
@@ -35,4 +45,15 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(ResultList)
+function mapDispatchToProps(dispatch) {
+  return {
+    setCourseId: (id) => {
+      dispatch(setCourse(id))
+    },
+    setQuery: (query) => {
+      dispatch(setSearchQuery(query))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ResultList)

@@ -3,23 +3,25 @@ import styles from './SearchBox.css'
 import { Input } from 'react-semantify'
 import { connect } from 'react-redux'
 import { fetchSearch, setSearchQuery } from '../../actions/search'
+import { push, replace } from 'react-router-redux';
 
 class SearchBox extends Component {
-
-
-  componentWillUpdate() {
-    console.log(this.props.query)
+  componentDidMount() {
+    this.props.sendSearch(this.props.query)
   }
+
   onChange(event) {
+    this.props.setLocation('/search/' + event.target.value)
     this.props.setQuery({query: event.target.value})
     this.props.sendSearch(event.target.value)
   }
 
   render () {
+    console.log(this.props.query)
     return (
       <div className={styles.searchBox}>
         <div className="ui input searchBox fluid">
-          <input defaultValue={this.props.query} placeholder="Search for courses..." type="text" onChange={this.onChange.bind(this)} />
+          <input className="search" value={this.props.query} placeholder="Search for courses..." type="text" onChange={this.onChange.bind(this)} />
         </div>
       </div>
     )
@@ -28,7 +30,7 @@ class SearchBox extends Component {
 
 function mapStateToProps(state) {
   return {
-    query: state.search_query.query
+    query: state.search_query
   }
 }
 
@@ -39,6 +41,9 @@ function mapDispatchToProps(dispatch) {
     },
     setQuery: (query) => {
       dispatch(setSearchQuery(query))
+    },
+    setLocation: (url) => {
+      dispatch(push(url))
     }
   }
 }

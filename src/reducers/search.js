@@ -6,7 +6,7 @@ function search(state = initialState, action) {
 	switch (action.type) {
 
 		case constants.SEARCH_RECEIVE:
-			return Object.assign([], [],action.json)
+			return Object.assign([], [], action.json)
 		default:
 			return state
   }

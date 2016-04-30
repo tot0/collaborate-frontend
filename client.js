@@ -16,6 +16,8 @@ const appHistory = useRouterHistory(createScrollHistory)()
 const history = syncHistoryWithStore(appHistory, store)
 
 
+history.listen(location => console.log(location))
+
 render(
   <Provider store={store}>
     <Router history={history} routes={routes} />

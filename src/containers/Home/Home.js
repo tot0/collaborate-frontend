@@ -3,22 +3,15 @@ import { connect } from 'react-redux'
 import styles from './Home.css'
 import { Link } from 'react-router'
 import { Grid, Column, Segment, Image } from 'react-semantify'
-import CourseCard from '../../components/CourseCard/CourseCard'
-import ResultList from '../ResultList/ResultList'
-import { setSearchQuery } from '../../actions/search'
 
 class Home extends Component {
-  componentWillMount() {
-    this.props.setQuery(this.props.params)
-  }
+
   render () {
-    console.log()
     return (
-      <Grid className="examplegrid">
+      <Grid>
         <Column className="three wide"/>
         <Column className="ten wide">
-          <ResultList />
-          {this.props.search_query == "" ? <div className={styles.descSegment}>
+          <div className={styles.descSegment}>
             <Segment className="raised">
               <div className={styles.descLogo}>
                 <Image className="medium" src="/public/Collaborate.png"></Image>
@@ -27,7 +20,7 @@ class Home extends Component {
                 Yea so collabor8 is really cool and like people should use it because dank memes and all that jazz.
               </p>
             </Segment>
-          </div> : null}
+          </div>
         </Column>
         <Column className="three wide"/>
       </Grid>
@@ -37,15 +30,11 @@ class Home extends Component {
 
 function mapStateToProps(state) {
   return {
-    search_query: state.search_query
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    setQuery: (query) => {
-      dispatch(setSearchQuery(query))
-    }
   }
 }
 

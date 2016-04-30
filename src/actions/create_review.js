@@ -1,10 +1,10 @@
+
 import fetch from 'isomorphic-fetch'
 const constants = require('../constants')
-import { browserHistory } from 'react-router'
 
-function fetchSearch(query) {
+function sendForm(form_data) {
   return dispatch => {
-    return fetch("http://108.61.213.229:5000/courses?q=" + query)
+    return fetch("http://108.61.213.229:5000/offerings/" + query)
       .then(req => req.json())
       .then(json => dispatch(receiveSearch(json)))
   }
