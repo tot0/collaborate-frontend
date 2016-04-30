@@ -2,7 +2,7 @@ import React from 'react'
 import marked from 'marked'
 import {Card, Content, Header, Rating, Grid, Column, Icon, Image} from 'react-semantify'
 
-function RatingCard(props) {
+function RecentCard(props) {
 
     let thumb = "thumbs outline down huge";
     if (props.data.recommended) {
@@ -18,7 +18,7 @@ function RatingCard(props) {
                   <Image className="bordered massive" src={props.data.user.pic} />
                 </Column>
                 <Column className="eleven wide">
-                  <Header>{props.data.user.name}</Header>
+                  <Header>{props.data.user.name} - {props.data.offering.course.code} - {props.data.offering.year}s{props.data.offering.semester}</Header>
                   <div className="meta">
                     {props.data.comment}
                   </div>
@@ -33,4 +33,4 @@ function RatingCard(props) {
     );
 }
 
-export default RatingCard
+export default RecentCard

@@ -4,7 +4,7 @@ import styles from './Home.css'
 import { Link } from 'react-router'
 import { Grid, Column, Segment, Image, Header } from 'react-semantify'
 import { setRecent } from '../../actions/recent'
-import RatingCard from '../../components/RatingCard/RatingCard'
+import RecentCard from '../../components/RecentCard/RecentCard'
 
 
 class Home extends Component {
@@ -23,7 +23,7 @@ class Home extends Component {
       })
       let self = this
       results = this.props.data.map(function(rating) {
-        return <RatingCard data={rating} key={rating.id} />
+        return <RecentCard data={rating} key={rating.id} />
       })
     }
     console.log(results)
