@@ -13,7 +13,12 @@ class SearchBox extends Component {
   onChange(event) {
     history.push('/search/' + event.target.value)
     this.props.setQuery({query: event.target.value})
-    this.props.sendSearch(event.target.value)
+  }
+
+  onKeyPress(event) {
+    if (event.charCode == 13) {
+      this.props.sendSearch(event.target.value)
+    }
   }
 
   render () {
@@ -21,7 +26,7 @@ class SearchBox extends Component {
     return (
       <div className={styles.searchBox}>
         <div className="ui input searchBox fluid">
-          <input className="search" value={this.props.query} placeholder="Search for courses..." type="text" onChange={this.onChange.bind(this)} />
+          <input className="search" value={this.props.query} placeholder="Search for courses..." type="text" onChange={this.onChange.bind(this)} onKeyPress={this.onKeyPress.bind(this)} />
         </div>
       </div>
     )
