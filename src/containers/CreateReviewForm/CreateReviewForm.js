@@ -17,7 +17,7 @@ class CreateReviewForm extends Component {
       state.lecture_quality,
       state.assessment_enjoyable,
       state.assessment_challenging,
-      state.assessment_relevant] = $('.ui.rating').rating('get rating');
+      state.assessment_relevant] = $('.ui.rating.rating_form').rating('get rating');
 
     [ state.recommended,
       state.lecture_videos,
@@ -60,7 +60,7 @@ class CreateReviewForm extends Component {
           <Header className="dividing">General</Header>
           <Field>
             <label>Were you satisfied with the course?</label>
-            <Rating className="star" init={{maxRating: 5}} onRate={this.rate}></Rating>
+            <Rating className="star rating_form" init={{maxRating: 5}} onRate={this.rate}></Rating>
           </Field>
           <Field>
             <label>Would you recommend this course to a friend?</label>
@@ -70,24 +70,24 @@ class CreateReviewForm extends Component {
           </Field>
           <Field>
             <label>How interesting was the course content?</label>
-            <Rating className="star" init={{maxRating: 5}}></Rating>
+            <Rating className="star rating_form" init={{maxRating: 5}}></Rating>
           </Field>
           <Field>
             <label>How challenging was the course?</label>
-            <Rating className="star" init={{maxRating: 5}}></Rating>
+            <Rating className="star rating_form" init={{maxRating: 5}}></Rating>
           </Field>
           <Field>
             <label>How time consuming was the course?</label>
-            <Rating className="star" init={{maxRating: 5}}></Rating>
+            <Rating className="star rating_form" init={{maxRating: 5}}></Rating>
           </Field>
           <Field>
             <label>How useful do you feel the course content will be in the future?</label>
-            <Rating className="star" init={{maxRating: 5}}></Rating>
+            <Rating className="star rating_form" init={{maxRating: 5}}></Rating>
           </Field>
           <Header className="dividing">Lectures</Header>
           <Field>
             <label>Quality of lectures</label>
-            <Rating className="star" init={{maxRating: 5}}></Rating>
+            <Rating className="star rating_form" init={{maxRating: 5}}></Rating>
           </Field>
           <Field>
             <label>Are lecture videos provided?</label>
@@ -111,15 +111,15 @@ class CreateReviewForm extends Component {
           <Header className="dividing">Assessments</Header>
           <Field>
             <label>How enjoyable were the assessments?</label>
-            <Rating className="star" init={{maxRating: 5}}></Rating>
+            <Rating className="star rating_form" init={{maxRating: 5}}></Rating>
           </Field>
           <Field>
             <label>How challenging were the assessments?</label>
-            <Rating className="star" init={{maxRating: 5}}></Rating>
+            <Rating className="star rating_form" init={{maxRating: 5}}></Rating>
           </Field>
           <Field>
             <label>How relevant were the assessments to the course?</label>
-            <Rating className="star" init={{maxRating: 5}}></Rating>
+            <Rating className="star rating_form" init={{maxRating: 5}}></Rating>
           </Field>
           <Header className="dividing">Other Comments</Header>
           <Field>
