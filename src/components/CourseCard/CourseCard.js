@@ -10,7 +10,7 @@ function CourseCard(props) {
             <Content>
               <Header>{props.data.code} {props.data.title}</Header>
               <div className="meta">
-                <Rating className="star" init={{initialRating: props.data.rating, maxRating: 5, interactive: false}} disabled></Rating>
+                <Rating className="star" init={{initialRating: props.data.ratings.overall.avg_rating, maxRating: 5, interactive: false}} disabled></Rating>
               </div>
             </Content>
           </Card>
