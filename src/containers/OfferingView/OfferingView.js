@@ -56,7 +56,7 @@ class OfferingView extends Component {
                 </Grid>
               </Content>
             </Segment>
-            <Header>Ratings</Header>
+            {results && results.length > 0 ? <Header>Ratings</Header> : null}
             {results}
           </Column>
           <Column className="three wide" />
