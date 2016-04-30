@@ -19,11 +19,11 @@ class Header extends Component {
         </Menu>
 
         <Grid className="">
-          <Column className="four wide" />
-          <Column className="eight wide">
+          <Column className="three wide" />
+          <Column className="ten wide">
             <SearchBox />
           </Column>
-          <Column className="four wide" />
+          <Column className="three wide" />
         </Grid>
       </header>
     )

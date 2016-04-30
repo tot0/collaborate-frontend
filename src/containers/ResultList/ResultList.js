@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react'
 import { Input, Grid, Column} from 'react-semantify'
-
 import history from '../../../client'
 import { connect } from 'react-redux'
 import { fetchSearch, setSearchQuery } from '../../actions/search'
@@ -10,7 +9,6 @@ import { setCourse } from '../../actions/course'
 class ResultList extends Component {
   handleClick(courseId, props) {
     this.props.setCourseId(courseId);
-    console.log(courseId)
     history.push('/course/'+courseId);
   }
 

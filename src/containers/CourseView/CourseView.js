@@ -1,10 +1,12 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import marked from 'marked'
+import history from '../../../client'
 import styles from './CourseView.css'
 import {Segment, Modal, Button, Content, Header, Rating, Grid, Column, Divider, Icon} from 'react-semantify'
 import { setCourse, fetchCourse, clearCourse } from '../../actions/course'
 import CreateReviewForm from '../CreateReviewForm/CreateReviewForm'
+import { setOffering } from '../../actions/offering'
 import OfferingCard from '../../components/OfferingCard/OfferingCard'
 
 class CourseView extends Component {
@@ -22,6 +24,11 @@ class CourseView extends Component {
     $('.ui.modal').modal('hide')
   }
 
+  handleClick(offeringId, props) {
+    this.props.setOfferingId(offeringId);
+    history.push('/offering/'+offeringId);
+  }
+
   render () {
     if (Object.keys(this.props.data).length === 0 &&
         this.props.course_id_1 != this.props.course_id_2) {
@@ -36,14 +43,14 @@ class CourseView extends Component {
       })
       let self = this
       results = this.props.data.offerings.map(function(offering) {
-        return <OfferingCard data={offering} key={offering.id} />
+        return <OfferingCard onClick={self.handleClick.bind(self, offering.id, self.props)} data={offering} key={offering.id} />
       })
     }
     console.log(this.props.data.ratings)
     return (
         <Grid>
-          <Column className="four wide" />
-          <Column className="eight wide">
+          <Column className="three wide" />
+          <Column className="ten wide">
           <Modal init={true}>
             <CreateReviewForm onSubmit={this.killModal}/>
           </Modal>
@@ -92,9 +99,10 @@ class CourseView extends Component {
                 </Grid>
               </Content>
             </Segment>
+            <Header>Offerings</Header>
             {results}
           </Column>
-          <Column className="four wide" />
+          <Column className="three wide" />
         </Grid>
     );
   }
@@ -111,9 +119,12 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     setCourseId: (id) => {
-      dispatch(clearCourse())
+      dispatch(clearCourse()),
       dispatch(setCourse(id)),
       dispatch(fetchCourse(id))
+    },
+    setOfferingId: (id) => {
+      dispatch(setOffering(id))
     }
   }
 }
