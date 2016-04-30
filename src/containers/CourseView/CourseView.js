@@ -60,10 +60,7 @@ class CourseView extends Component {
             <Header className="ui top attached header">
               <div className={styles.header}>
                 <div className={styles.code}>
-                  {this.props.data.code}
-                </div>
-                <div className={styles.title}>
-                  {this.props.data.title}
+                  {this.props.data.code} - {this.props.data.title}
                 </div>
               </div>
             </Header>
@@ -71,30 +68,15 @@ class CourseView extends Component {
               <Content>
                 <Grid>
                   <Column className="eleven wide">
-                    <div className="meta">
-                      <div className={styles.rating}>Sem 1:</div>
-                      <Rating className="star massive" init={{initialRating: this.props.data.ratings.sem_1.avg_rating, maxRating: 5, interactive: false}} disabled></Rating>
+                    <div className={styles.satisfaction + " meta"}>
+                      <div className={styles.rating}>Satisfaction:</div>
+                      <Rating className="star massive" init={{initialRating: this.props.data.ratings.overall.avg_rating, maxRating: 5, interactive: false}} disabled></Rating>
                     </div>
                   </Column>
                   <Column className="five wide">
-                    <div>
+                    <div className={styles.satisfaction + " " + styles.rightio}>
+                      <div className={styles.recommend}>{this.props.data.ratings.overall.percent_recommended}%</div>
                       <Icon className={styles.thumb + " thumbs outline up big"} />
-                      <div className={styles.recommend}>{this.props.data.ratings.sem_1.percent_recommended}%</div>
-                    </div>
-                  </Column>
-                </Grid>
-                <Divider className="" />
-                <Grid>
-                  <Column className="eleven wide">
-                    <div className="meta">
-                      <div className={styles.rating}>Sem 2:</div>
-                      <Rating className="star massive" init={{initialRating: this.props.data.ratings.sem_2.avg_rating, maxRating: 5, interactive: false}} disabled></Rating>
-                    </div>
-                  </Column>
-                  <Column className="five wide">
-                    <div>
-                      <Icon className={styles.thumb + " thumbs outline up big"} />
-                      <div className={styles.recommend}>{this.props.data.ratings.sem_2.percent_recommended}%</div>
                     </div>
                   </Column>
                 </Grid>

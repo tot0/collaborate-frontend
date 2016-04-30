@@ -31,7 +31,7 @@ class CreateReviewForm extends Component {
     // if (typeof(offering) == Array) {
     //   state.offering = offering.slice(-1)
     // }
-    state.offering = parseInt(offering)
+    state.offering_id = parseInt(offering)
 
 
     state.access_token = this.props.access_token

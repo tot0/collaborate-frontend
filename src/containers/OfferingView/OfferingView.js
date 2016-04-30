@@ -111,9 +111,10 @@ class OfferingView extends Component {
                     </td></tr>
                     </tbody>
                     </table>
+
                   </Column>
                   <Column className="four wide">
-                    <div>
+                    <div className={styles.satisfaction + " " + styles.rightio}>
                       <Icon className={styles.thumb + " thumbs outline up big"} />
                       <div className={styles.recommend}>{this.props.data.aggregated_ratings.percent_recommended}%</div>
                     </div>
