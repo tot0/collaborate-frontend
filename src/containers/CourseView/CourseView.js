@@ -25,8 +25,9 @@ class CourseView extends Component {
   }
 
   handleClick(offeringId, props) {
-    this.props.setOfferingId(offeringId);
-    history.push('/offering/'+offeringId);
+    //this.props.setOfferingId(offeringId);
+    //history.push('/offering/'+offeringId);
+    location.href = '/offering/'+offeringId;
   }
 
   render () {
@@ -78,7 +79,7 @@ class CourseView extends Component {
                   <Column className="five wide">
                     <div>
                       <Icon className={styles.thumb + " thumbs outline up big"} />
-                      <div className={styles.reccomend}>{this.props.data.ratings.sem_1.percent_recommended}%</div>
+                      <div className={styles.recommend}>{this.props.data.ratings.sem_1.percent_recommended}%</div>
                     </div>
                   </Column>
                 </Grid>
@@ -93,7 +94,7 @@ class CourseView extends Component {
                   <Column className="five wide">
                     <div>
                       <Icon className={styles.thumb + " thumbs outline up big"} />
-                      <div className={styles.reccomend}>{this.props.data.ratings.sem_2.percent_recommended}%</div>
+                      <div className={styles.recommend}>{this.props.data.ratings.sem_2.percent_recommended}%</div>
                     </div>
                   </Column>
                 </Grid>

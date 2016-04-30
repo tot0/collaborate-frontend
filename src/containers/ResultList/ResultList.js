@@ -8,8 +8,9 @@ import { setCourse } from '../../actions/course'
 
 class ResultList extends Component {
   handleClick(courseId, props) {
-    this.props.setCourseId(courseId);
-    history.push('/course/'+courseId);
+    //this.props.setCourseId(courseId);
+    //history.push('/course/'+courseId);
+    location.href = '/course/'+courseId;
   }
 
   componentWillMount() {

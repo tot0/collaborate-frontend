@@ -21,7 +21,7 @@ function OfferingCard(props) {
               <Column className="five wide">
                 <div>
                   <Icon className={styles.thumb + " thumbs outline up big"} />
-                  <div className={styles.reccomend}>{props.data.aggregated_ratings.percent_recommended}%</div>
+                  <div className={styles.recommend}>{props.data.aggregated_ratings.percent_recommended}%</div>
                 </div>
               </Column>
             </Grid>
