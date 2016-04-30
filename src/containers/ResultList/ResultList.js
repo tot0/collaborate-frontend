@@ -31,7 +31,7 @@ class ResultList extends Component {
 function mapStateToProps(state) {
   return {
     results: state.search,
-    query: state.search_query.query
+    query: state.search_query
   }
 }
 

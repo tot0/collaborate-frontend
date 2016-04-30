@@ -18,7 +18,7 @@ class Home extends Component {
         <Column className="three wide"/>
         <Column className="ten wide">
           <ResultList />
-          {Object.keys(this.props.search_query).length === 0 || this.props.search_query.query == "" ? <div className={styles.descSegment}>
+          {this.props.search_query == "" ? <div className={styles.descSegment}>
             <Segment className="raised">
               <div className={styles.descLogo}>
                 <Image className="medium" src="/public/Collaborate.png"></Image>
