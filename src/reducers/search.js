@@ -6,7 +6,7 @@ function update(state = initialState, action) {
 	switch (action.type) {
 
 		case constants.SEARCH_RECEIVE:
-			return Object.assign({}, state, action.json)
+			return Object.assign([], state, action.json)
 		default:
 			return state
   }

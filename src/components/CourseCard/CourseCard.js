@@ -4,10 +4,12 @@ import {Card, Content, Header, Rating} from 'react-semantify'
 
 function CourseCard(props) {
 
-    const {name, rating, year, sem} = props.data
-
+    //const {name, rating, year, sem} = props.data
+    const name = "memes"
+    const rating = 4
+    const year = 15
+    const sem = 1
     return (
-      <div>
         <Card className="fluid">
           <Content>
             <Header>{name} <small>{year}s{sem}</small></Header>
@@ -16,7 +18,6 @@ function CourseCard(props) {
             </div>
           </Content>
         </Card>
-      </div>
     );
 }
 

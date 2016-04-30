@@ -4,15 +4,16 @@ import styles from './Home.css'
 import { Link } from 'react-router'
 import { Grid, Column, Segment, Image } from 'react-semantify'
 import CourseCard from '../../components/CourseCard/CourseCard'
+import ResultList from '../ResultList/ResultList'
 
 class Home extends Component {
   render () {
 
-    console.log(this.props.results)
     return (
       <Grid className="examplegrid">
-        <Column className="five wide"/>
-        <Column className="six wide">
+        <Column className="three wide"/>
+        <Column className="ten wide">
+          <ResultList />
           <div className={styles.descSegment}>
             <Segment className="raised">
               <div className={styles.descLogo}>
@@ -24,7 +25,7 @@ class Home extends Component {
             </Segment>
           </div>
         </Column>
-        <Column className="five wide"/>
+        <Column className="three wide"/>
       </Grid>
     )
   }

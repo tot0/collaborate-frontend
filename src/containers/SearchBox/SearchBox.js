@@ -6,7 +6,6 @@ import { fetchSearch } from '../../actions/search'
 
 class SearchBox extends Component {
   onChange(event) {
-    console.log(event.target.value)
     this.props.sendSearch(event.target.value)
   }
 
