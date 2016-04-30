@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import styles from './FacebookLoginContainer.css'
 import { connect } from 'react-redux'
 import FacebookLogin from 'react-facebook-login'
 import {setFacebookAction} from '../../actions/facebook'
@@ -28,7 +29,7 @@ class FacebookLoginContainer extends Component {
       button = <FacebookLogin
             appId="476180995908469"
             autoLoad={true}
-            cssClass="ui tiny button blue"
+            cssClass={styles.facebookBtn + " ui tiny button blue"}
             callback={this.responseFacebook.bind(this)} />
     } else {
       button = <span>{this.state.name}</span>
