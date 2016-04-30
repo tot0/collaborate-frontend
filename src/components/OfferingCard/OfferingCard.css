@@ -1,0 +1,20 @@
+.rating {
+  display: inline-block;
+  padding-right: 0.25em;
+  font-size: 1.5em;
+  vertical-align: middle;
+}
+
+.reccomend {
+  display: inline-block;
+  font-size: 1.75em;
+}
+
+.thumb {
+  padding-bottom: 1.4em;
+}
+
+.lecturer {
+  font-size: 1.25em;
+  padding-bottom: 0.5em;
+}

@@ -4,14 +4,12 @@ import {Card, Content, Header, Rating} from 'react-semantify'
 
 function CourseCard(props) {
 
-    const {code, title} = props.data
-    const rating = 4
     return (
         <Card className="fluid">
           <Content>
-            <Header>{code} {title}</Header>
+            <Header>{props.data.code} {props.data.title}</Header>
             <div className="meta">
-              <Rating className="star" init={{initialRating: rating, maxRating: 5, interactive: false}} disabled></Rating>
+              <Rating className="star" init={{initialRating: props.data.rating, maxRating: 5, interactive: false}} disabled></Rating>
             </div>
           </Content>
         </Card>
