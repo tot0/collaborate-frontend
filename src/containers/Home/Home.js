@@ -5,6 +5,8 @@ import { Link } from 'react-router'
 import { Grid, Column, Segment, Image } from 'react-semantify'
 
 class Home extends Component {
+  componentDidMount() {
+  }
 
   render () {
     return (

@@ -3,7 +3,7 @@ import styles from './SearchBox.css'
 import { Input } from 'react-semantify'
 import { connect } from 'react-redux'
 import { fetchSearch, setSearchQuery } from '../../actions/search'
-import { push, replace } from 'react-router-redux';
+import history from '../../../client';
 
 class SearchBox extends Component {
   componentDidMount() {
@@ -11,7 +11,7 @@ class SearchBox extends Component {
   }
 
   onChange(event) {
-    this.props.setLocation('/search/' + event.target.value)
+    history.push('/search/' + event.target.value)
     this.props.setQuery({query: event.target.value})
     this.props.sendSearch(event.target.value)
   }
@@ -41,9 +41,6 @@ function mapDispatchToProps(dispatch) {
     },
     setQuery: (query) => {
       dispatch(setSearchQuery(query))
-    },
-    setLocation: (url) => {
-      dispatch(push(url))
     }
   }
 }

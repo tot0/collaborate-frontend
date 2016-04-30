@@ -24,3 +24,5 @@ render(
   </Provider>,
   document.getElementById('mount')
 )
+
+export default history

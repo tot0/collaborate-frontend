@@ -13,7 +13,6 @@ const routes = (
     <Route path="/search/:query" component={ResultList}/>
     <Route path="/search/" component={Home}/>
     <Route path="/course/:id" component={CourseView}/>
-    {/*}<Route path="/package/:id/:name" component={Package}/>*/}
   </Route>
 )
 
