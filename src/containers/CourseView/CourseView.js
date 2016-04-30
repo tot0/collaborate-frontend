@@ -25,8 +25,9 @@ class CourseView extends Component {
   }
 
   handleClick(offeringId, props) {
-    this.props.setOfferingId(offeringId);
-    history.push('/offering/'+offeringId);
+    //this.props.setOfferingId(offeringId);
+    //history.push('/offering/'+offeringId);
+    location.href = '/offering/'+offeringId;
   }
 
   render () {
