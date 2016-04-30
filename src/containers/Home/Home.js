@@ -1,58 +1,21 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { fetchPackages } from '../../actions/npmPackages'
 import styles from './Home.css'
-import Loader from '../../components/Loader/Loader'
-import { isEmpty } from '../../utils'
 import { Link } from 'react-router'
-import { Grid, Column } from 'react-semantify'
-import CourseCard from '../../components/CourseCard/CourseCard'
+import { Grid, Column, Input, Icon, Field } from 'react-semantify'
+import CourseView from '../../components/CourseView/CourseView'
 
 
 class Home extends Component {
 
-  static fetchData({ params, store, url }) {
-    return store.dispatch( fetchPackages(url) )
-  }
-
-  constructor (props) {
-    super(props)
-  }
-
-  componentDidMount () {
-    this.props.dispatch(fetchPackages(location.origin))
-  }
-
   render () {
-
-    const { npmPackages } = this.props
-    let loader = <Loader />
-    let packages = null
-
-    if( isEmpty(npmPackages) ){
-      /* npm packages not loaded yet... */
-    } else {
-      loader = null
-
-      packages = (
-        npmPackages.map(function (p) {
-          return (
-            <li key={p.id}>
-              <Link to={`/package/${p.id}/${p.name}`}>
-                <p className={styles.name}>{p.name}</p>
-              </Link>
-            </li>
-          )
-        })
-      )
-    }
 
     return (
       <div className={styles.home}>
         <Grid className="examplegrid">
           <Column className="two wide"/>
           <Column className="twelve wide">
-            <CourseCard data={{name: "COMP1927", rating: 5, year: 15, sem: 2}}/>
+            <CourseView data={{name: "COMP1927", rating: 5, year: 15, sem: 2}}/>
           </Column>
           <Column className="two wide"/>
         </Grid>
@@ -63,9 +26,8 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state)
   return {
-    npmPackages: state.npmPackages.packages
+    token: state.token
   }
 }
 

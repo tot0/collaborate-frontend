@@ -8,7 +8,7 @@ function CourseCard(props) {
 
     return (
       <div>
-        <Card className="examplecard">
+        <Card className="fluid">
           <Content>
             <Header>{name} <small>{year}s{sem}</small></Header>
             <div className="meta">

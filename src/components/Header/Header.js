@@ -1,17 +1,18 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import styles from './Header.css'
-import {Menu, Item, Icon} from 'react-semantify'
+import { Menu, Item, Icon, Image } from 'react-semantify'
+import FacebookLoginContainer from '../../containers/FacebookLoginContainer/FacebookLoginContainer'
 
 function Header() {
   return (
     <header>
-      <Menu className="inverted top fixed">
-        <Item className="active" type="link">
-          <Icon className="home" />Home
+      <Menu className="large main inverted top fixed">
+        <Item className="header" type="div">
+              Collaborate
         </Item>
-        <Item type="link">
-          <Icon className="mail"/> Messages
+        <Item type="link" className="right">
+            <FacebookLoginContainer />
         </Item>
       </Menu>
     </header>
