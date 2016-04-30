@@ -23,5 +23,18 @@
   color: #444;
   font-size: 26px;
   margin-bottom: 0px;
-  margin-top: 0px;  
+  margin-top: 0px;
+}
+
+.descSegment {
+  padding-top: 10vh;
+}
+
+.descTitle {
+  text-align: center;
+  font-size: 3em;
+}
+
+.descPara {
+  font-size: 16px;
 }
