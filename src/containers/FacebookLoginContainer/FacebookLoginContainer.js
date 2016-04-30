@@ -13,10 +13,13 @@ class FacebookLoginContainer extends Component {
     }
   }
   responseFacebook(response) {
-    this.props.onFacebookConnected(response.accessToken)
-    this.setState({
-      isLoggedIn: true,
-      name: response.name});
+    // check the token actually exists
+    if (response.accessToken) {
+        this.props.onFacebookConnected(response.accessToken)
+        this.setState({
+          isLoggedIn: true,
+          name: response.name});
+    }
   }
 
   render () {
