@@ -1,1 +1,2 @@
-import setFacebookAction from './facebook'
+export facebook from './facebook'
+export search from './search'

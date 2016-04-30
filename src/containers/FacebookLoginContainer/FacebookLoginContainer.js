@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import FacebookLogin from 'react-facebook-login'
 import {setFacebookAction} from '../../actions/facebook'
+import {fetchSearch} from '../../actions/search'
 
 class FacebookLoginContainer extends Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class FacebookLoginContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    token: state.token,
+    token: state.token
   }
 }
 

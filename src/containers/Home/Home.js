@@ -6,9 +6,9 @@ import { Grid, Column, Segment } from 'react-semantify'
 import CourseCard from '../../components/CourseCard/CourseCard'
 
 class Home extends Component {
-
   render () {
 
+    console.log(this.props.results)
     return (
       <Grid className="examplegrid">
         <Column className="five wide"/>
@@ -30,6 +30,7 @@ class Home extends Component {
 
 function mapStateToProps(state) {
   return {
+    results: state.search
   }
 }
 

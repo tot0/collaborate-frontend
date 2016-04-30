@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import Header from '../components/Header/Header'
-import Footer from '../components/Footer/Footer'
 
 /* generic styles */
 import styles from '../styles/base.css'
@@ -13,17 +12,9 @@ Object.assign(styles, normalize)
 function App({ pushPath, children }) {
   return (
     <div>
-
       <Header />
-
-      <main>
-        {children}
-      </main>
-
-      <Footer />
-
+      <main>{children}</main>
     </div>
-
   );
 };
 

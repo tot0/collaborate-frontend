@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { Menu, Item, Icon, Image, Grid, Column, Input } from 'react-semantify'
 import FacebookLoginContainer from '../../containers/FacebookLoginContainer/FacebookLoginContainer'
-import styles from './Header.css'
+import SearchBox from '../../containers/SearchBox/SearchBox'
 
 function Header() {
   return (
@@ -20,13 +20,10 @@ function Header() {
       <Grid className="">
         <Column className="four wide" />
         <Column className="eight wide">
-          <div className={styles.searchBox}>
-            <Input className="searchBox fluid" placeholder="Search for courses..." type="text" />
-          </div>
+          <SearchBox />
         </Column>
         <Column className="four wide" />
       </Grid>
-
     </header>
   )
 }
